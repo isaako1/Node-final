@@ -3,11 +3,15 @@ const express = require("express");
 const path = require("path");
 var app = express();
 var bodyParser = require('body-parser');
-
+const { Pool } = require('pg');
+const connectionString = process.env.DATABASE_URL || "postgres://isaac:student@localhost:5432/finaldb";
+const pool = new Pool({connectionString : connectionString});
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+
+
 
 //body parser
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
@@ -41,9 +45,21 @@ app.get('/', function(req, res) {
     var email = req.body.email;
     var password = req.body.password;
 res.json({message: '✅✅✅', email, password});
+var sqlVer = "SELECT credentials_id, email, username, password FROM credentials WHERE email=$1::text AND password=$2::text";
+var params = [email, password];
 
+pool.query(sqlVer, params,function(err, connectionString_results){
+  if(err){
+    
+    throw err;
+    
+      } else {
+        console.log ("Back from the database with: ");
+        console.log (connectionString_results);
+        if ()
+      }
+});
 
-console.log(email);
   });
 
 
