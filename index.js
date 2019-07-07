@@ -49,22 +49,21 @@ var sqlVer = "SELECT credentials_id, email, username, password FROM credentials 
 var params = [email, password];
 
 pool.query(sqlVer, params,function(err, connectionString_results){
-  if(err){
-    
-    throw err;
-    
+  if(err){    
+    throw err;    
       } else {
         console.log ("Back from the database with: ");
-        console.log (connectionString_results);
-        if ()
+        var results = JSON.parse(JSON.stringify(connectionString_results));
+        console.log(results.data);
+        //console.log (connectionString_results);
+        
+        
+        
+        
       }
 });
 
   });
-
-
-
-
 
 
 
