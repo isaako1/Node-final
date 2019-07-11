@@ -57,7 +57,7 @@ pool.query(sqlVer, params,function(err, connectionString_results){
         console.log(results.data);
         //console.log (connectionString_results);
         
-        
+        //////////How to change a JSON object to a tring or array
         
         
       }
