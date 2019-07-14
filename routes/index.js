@@ -1,6 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
+const { Pool } = require('pg');
+const connectionString = process.env.DATABASE_URL || "postgres://isaac:student@localhost:5432/finaldb";
+const pool = new Pool({connectionString : connectionString});
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('test', { title: 'Express' });
@@ -15,9 +19,36 @@ router.post('/login', function(req, res, next) {
     // return a JSON object with success set to false.
   var result = {success: false};
 
+
+
+
+
+  var email = req.body.email;
+  var password = req.body.password;
+
+var sqlVer = "SELECT credentials_id, email, username, password FROM credentials WHERE email=$1::text AND password=$2::text";
+var params = [email, password];
+
+pool.query(sqlVer, params,function(err, connectionString_results){
+if(err){    
+  throw err;    
+    } else {
+        console.log (connectionString_results);
+      console.log ("Back from the database with: ");
+      var loginQuery = JSON.parse(JSON.stringify(connectionString_results));
+      console.log(loginQuery);
+    }
+
+
+
+});
+
+
+
+
 console.log("username: " + req.body.email);
 console.log("password: " + req.body.password);
-    if (req.body.email == "idsm_2000@hotmail.com" && req.body.password == "password") {
+    if (req.body.email == "san16044@byui.edu" && req.body.password == "testing") {
         //hange your /login so that if the correct username and password
         // are received it stores the username on the session.
         req.session.user = req.body.email;

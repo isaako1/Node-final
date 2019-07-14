@@ -6,6 +6,8 @@ var indexRouter = require('./routes/index');
 
 
 
+
+
 var app = express();
 // We are going to use sessions
 var session = require('express-session');
