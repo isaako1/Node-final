@@ -4,6 +4,7 @@ var router = express.Router();
 const { Pool } = require('pg');
 const connectionString = process.env.DATABASE_URL || "postgres://isaac:student@localhost:5432/finaldb";
 const pool = new Pool({connectionString : connectionString});
+router.use(express.json());
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -18,7 +19,9 @@ router.post('/login', function(req, res, next) {
     // set to true. If you do not receive these values,
     // return a JSON object with success set to false.
   var result = {success: false};
-
+  var resultStringed = [];
+  var emailQuery = "nope";
+  var passQuery = "nope";
 
 
 
@@ -32,29 +35,43 @@ var params = [email, password];
 pool.query(sqlVer, params,function(err, connectionString_results){
 if(err){    
   throw err;    
-    } else {
-        console.log (connectionString_results);
-      console.log ("Back from the database with: ");
-      var loginQuery = JSON.parse(JSON.stringify(connectionString_results));
-      console.log(loginQuery);
+    } else if(connectionString_results.rows.length == 0){ 
+        result = {success: false};
+        
+
     }
+    
+    else {
+    
+      console.log ("Back from the database with: ");
+      var loginQuery = JSON.parse(JSON.stringify(connectionString_results.rows));
+      //console.log(connectionString_results);
+      for(var i in loginQuery)
+      resultStringed.push([i, loginQuery[i]]);
 
+      console.log(resultStringed[0][1]);
+      //console.log(resultStringed[0][1].email);
+      //console.log("test"+connectionString_results.rowCount);
 
-
-});
-
-
-
+      
+     emailQuery = resultStringed[0][1].email;
+     passQuery = resultStringed[0][1].password;
+    }
 
 console.log("username: " + req.body.email);
 console.log("password: " + req.body.password);
-    if (req.body.email == "san16044@byui.edu" && req.body.password == "testing") {
+
+console.log("username QUERY: " + emailQuery);
+console.log("password QUERY: " + passQuery);
+    if (req.body.email == emailQuery && req.body.password == passQuery) {
         //hange your /login so that if the correct username and password
         // are received it stores the username on the session.
         req.session.user = req.body.email;
         //set true
         result = {success: true};
     }
+
+    
 console.log(result);
     res.json(result);
     //Verify that you get the expected results
@@ -80,6 +97,7 @@ else {
 }
     res.json(result);
 
+});
 });
 
 
