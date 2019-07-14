@@ -1,19 +1,16 @@
 {
-  "name": "final-project",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "team12",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
   "dependencies": {
     "body-parser": "^1.19.0",
-    "ejs": "^2.6.2",
-    "express": "^4.17.1",
-    "node-fetch": "^2.6.0",
-    "pg": "^7.11.0"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC"
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-session": "^1.16.2",
+    "morgan": "~1.9.1"
+  }
 }
