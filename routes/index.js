@@ -15,11 +15,12 @@ router.post('/login', function(req, res, next) {
     // return a JSON object with success set to false.
   var result = {success: false};
 
-
-    if (req.body.username == "idsm_2000@hotmail.com" && req.body.password == "password") {
+console.log("username: " + req.body.email);
+console.log("password: " + req.body.password);
+    if (req.body.email == "idsm_2000@hotmail.com" && req.body.password == "password") {
         //hange your /login so that if the correct username and password
         // are received it stores the username on the session.
-        req.session.user = req.body.username;
+        req.session.user = req.body.email;
         //set true
         result = {success: true};
     }

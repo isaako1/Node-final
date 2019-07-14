@@ -2,8 +2,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
 var indexRouter = require('./routes/index');
+
 
 
 var app = express();
@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(logRequest);
 app.use('/', indexRouter);
 app.use('/login', indexRouter);
-app.use('/getServerTime', indexRouter, verifyLogin);
+
 
 
 
