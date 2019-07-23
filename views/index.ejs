@@ -26,38 +26,27 @@
                 <div class="sidebar-header">
                     <h3>BYU-I Library</h3>
                     <strong>LIB</strong>
+                    <br>
+                    <form action="/logout" method="post">
+                        <button type="submit" class="btn btn-danger btn-sm">Logout</button>
+                    </form>
                 </div>
 
                 <ul class="list-unstyled components">
                     <li class="active">
-                        <a href="#home" aria-expanded="false">
-                            <i class="glyphicon glyphicon-home"></i>
-                            Home
-                        </a>                        
+                        <a href="#home" aria-expanded="false"><i class="glyphicon glyphicon-home"></i>Home</a>                        
                     </li>
                     <li>
-                        <a href="#">
-                            <i class="glyphicon glyphicon-book"></i>
-                            Rentals
-                        </a>
-                        <a href="#pageSubmenu"  aria-expanded="false">
-                            <i class="glyphicon glyphicon-check"></i>
-                            Return Books
-                        </a>
+                        <a href="#"><i class="glyphicon glyphicon-book"></i>Rentals</a>
+                        <a href="#pageSubmenu"  aria-expanded="false"><i class="glyphicon glyphicon-check"></i>Return Books</a>
                         
                     </li>
                     
                     <li>
-                        <a href="#">
-                            <i class="glyphicon glyphicon-user"></i>
-                            My Profile
-                        </a>
+                        <a href="#"><i class="glyphicon glyphicon-user"></i> My Profile</a>
                     </li>
                     <li>
-                        <a href="#">
-                            <i class="glyphicon glyphicon-send"></i>
-                            Contact
-                        </a>
+                        <a href="#"><i class="glyphicon glyphicon-send"></i>Contact</a>
                     </li>
                 </ul>
 
@@ -81,14 +70,14 @@
                     </div>
                 </nav>
 
-                <h2>Welcome to the Library - <b>Username goes here</b><%=  %></h2>
+                <h2>Welcome to the Library - <b>Username goes here</b><%=   %></h2>
                 <p>I-Book Library is a web application with the mission of administer the books that are currently in the library and saving a record of the books that have been used by the customer.</p>
                 <p>Users will be able to see the books that the customer has rented and with the option of returning them. They will be able to see the books available and make filters to see them.</p>
 
                 <div class="line"></div>
 
                 <h2>Filter Section</h2>
-                <Form>
+                <form action="/query" method="post" >
                    
                     <div class="form-group" style=" width: 200px">
                               <label for="srch">Search:</label>
@@ -106,7 +95,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Search</button>
 
-                </Form>
+                </form>
 
 
 
