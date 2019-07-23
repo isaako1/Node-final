@@ -37,7 +37,7 @@ if(err){
   throw err;    
     } else if(connectionString_results.rows.length == 0){ 
         result = {success: false};
-        
+            
 
     }
     
@@ -83,7 +83,7 @@ console.log(result);
       res.render('index.ejs');
     }
     else{
-      res.json(result);
+      res.redirect('index.html');    
     }
 });
 
@@ -96,6 +96,7 @@ if (req.session.user){
     result = {success: true};
     console.log('Logout successful');
     console.log(result);
+    res.redirect('index.html');
 }
 else {
     //f the username is not present on the session,
@@ -103,7 +104,7 @@ else {
     result = {success: false};
     console.log(result);
 }
-    res.json(result);
+res.redirect('index.html');    
 
 });
 });
