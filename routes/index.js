@@ -67,16 +67,24 @@ console.log("password QUERY: " + passQuery);
         //hange your /login so that if the correct username and password
         // are received it stores the username on the session.
         req.session.user = req.body.email;
+        console.log("Session user: " + req.session.user);
         //set true
         result = {success: true};
+       
     }
 
     
 console.log(result);
-    res.json(result);
+   // res.json(result);
     //Verify that you get the expected results
     // on the HTML page. Please note that nothing
     // is being stored on the session yet.
+    if(req.session.user){
+      res.render('index.ejs');
+    }
+    else{
+      res.json(result);
+    }
 });
 
 router.post('/logout', function(req, res, next) {
@@ -101,14 +109,6 @@ else {
 });
 
 
-router.get('/getServerTime', function(req, res, next) {
-    //You get get the server time with code like:
-    var time = new Date();
-    //Create a Get route for /getServerTime that returns a
-    // JSON object with a success value set to true and a
-    // time attribute set to the server time.
-    var result = {success: true, time: time};
-    res.json(result);
-});
+
 
 module.exports = router;

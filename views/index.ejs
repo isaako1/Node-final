@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>Collapsible sidebar using Bootstrap 3</title>
+
+        <!--This is a comment. BOOTSTRAP CODE -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!--This is a comment. BOOTSTRAP CODE-->
+        <link rel="stylesheet" href="css/style4.css"
+    </head>
+    <body>
+
+
+
+        <div class="wrapper">
+            <!-- Sidebar Holder -->
+            <nav id="sidebar">
+                <div class="sidebar-header">
+                    <h3>BYU-I Library</h3>
+                    <strong>LIB</strong>
+                </div>
+
+                <ul class="list-unstyled components">
+                    <li class="active">
+                        <a href="#home" aria-expanded="false">
+                            <i class="glyphicon glyphicon-home"></i>
+                            Home
+                        </a>                        
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="glyphicon glyphicon-book"></i>
+                            Rentals
+                        </a>
+                        <a href="#pageSubmenu"  aria-expanded="false">
+                            <i class="glyphicon glyphicon-check"></i>
+                            Return Books
+                        </a>
+                        
+                    </li>
+                    
+                    <li>
+                        <a href="#">
+                            <i class="glyphicon glyphicon-user"></i>
+                            My Profile
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="glyphicon glyphicon-send"></i>
+                            Contact
+                        </a>
+                    </li>
+                </ul>
+
+               
+            </nav>
+
+            <!-- Page Content Holder -->
+            <div id="content">
+
+                <nav class="navbar navbar-default">
+                    <div class="container-fluid">
+
+                        <div class="navbar-header">
+                            <button type="button" id="sidebarCollapse" class="btn btn-primary navbar-btn">
+                                <i class="glyphicon glyphicon-align-left"></i>
+                                <span> </span>
+                            </button>
+                        </div>
+
+                        
+                    </div>
+                </nav>
+
+                <h2>Welcome to the Library - <b>Username goes here</b><%=  %></h2>
+                <p>I-Book Library is a web application with the mission of administer the books that are currently in the library and saving a record of the books that have been used by the customer.</p>
+                <p>Users will be able to see the books that the customer has rented and with the option of returning them. They will be able to see the books available and make filters to see them.</p>
+
+                <div class="line"></div>
+
+                <h2>Filter Section</h2>
+                <Form>
+                   
+                    <div class="form-group" style=" width: 200px">
+                              <label for="srch">Search:</label>
+                              <input class="form-control type="text" id="srch"></input>
+                            </select>
+                    </div>
+                    <div class="form-group" style=" width: 100px">
+                            <label for="sel1">Filter By:</label>                         
+                            <select class="form-control " id="sel1">
+                              <option>Title</option>
+                              <option>Author</option>
+                              <option>ISBN</option>
+                              <option>Publisher</option>                            
+                            </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Search</button>
+
+                </Form>
+
+
+
+                <div class="line"></div>
+
+                <h2>Here Goes the Table of Results</h2>
+                <p>A table query results should display here from my Postgres Database.</p>
+
+                <div class="line"></div>
+
+            </div>
+        </div>
+
+
+
+
+
+        <!-- jQuery CDN -->
+         <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+         <!-- Bootstrap Js CDN -->
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+         <script type="text/javascript">
+             $(document).ready(function () {
+                 $('#sidebarCollapse').on('click', function () {
+                     $('#sidebar').toggleClass('active');
+                 });
+             });
+         </script>
+    </body>
+</html>

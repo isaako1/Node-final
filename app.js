@@ -12,6 +12,9 @@ var app = express();
 // We are going to use sessions
 var session = require('express-session');
 
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+
 // set up sessions
 app.use(session({
     secret: 'my-super-secret-secret!',
