@@ -41,7 +41,6 @@
                         <a href="#pageSubmenu"  aria-expanded="false"><i class="glyphicon glyphicon-check"></i>Return Books</a>
                         
                     </li>
-                    
                     <li>
                         <a href="#"><i class="glyphicon glyphicon-user"></i> My Profile</a>
                     </li>
@@ -81,12 +80,12 @@
                    
                     <div class="form-group" style=" width: 200px">
                               <label for="srch">Search:</label>
-                              <input class="form-control type="text" id="srch"></input>
+                              <input class="form-control" type="text" name="srch" id="srch"></input>
                             </select>
                     </div>
                     <div class="form-group" style=" width: 100px">
                             <label for="sel1">Filter By:</label>                         
-                            <select class="form-control " id="sel1">
+                            <select class="form-control " name="sel1" id="sel1">
                               <option>Title</option>
                               <option>Author</option>
                               <option>ISBN</option>
@@ -96,23 +95,30 @@
                     <button type="submit" class="btn btn-primary">Search</button>
 
                 </form>
-
-
-
                 <div class="line"></div>
 
                 <h2>Here Goes the Table of Results</h2>
                 <p>A table query results should display here from my Postgres Database.</p>
 
+                <%=
+                //  for(var i = 0; i < tableJSONobject.length; i++) {
+                  //  for(var j = 0; j < tableJSONobject[i].length; j++) {
+                    //    for(var val in tableJSONobject[i][j]) {
+                      //      alert(val)
+                        //    alert(tableJSONobject[i][j][val])
+                        //}
+                 //   }
+                //}
+                 %>
+
+
+
+
+
                 <div class="line"></div>
 
             </div>
         </div>
-
-
-
-
-
         <!-- jQuery CDN -->
          <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
          <!-- Bootstrap Js CDN -->

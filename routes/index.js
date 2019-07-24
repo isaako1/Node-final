@@ -109,7 +109,67 @@ res.redirect('index.html');
 });
 });
 
+router.post('/query', function(req, res, next){
+var sqlqueryEjs = "NULL";
+  console.log('Testing Query');
+  var filterBy = req.body.sel1;
+  var searchQuery = req.body.srch;
+
+  if (filterBy == "Title"){
+    sqlqueryEjs = "SELECT book_title, book_author, book_isbn, publisher FROM books WHERE book_title LIKE '%harry%'";
+   // console.log(sqlqueryEjs);
+   var params = [searchQuery];
+
+/** 
+ * ---------------DEAD END, Couldnt make the query work----------------
+   pool.query(sqlqueryEjs, params,function(err, connectionString_search_results){
+    if(err){    
+      throw err;    
+        } else if(connectionString_search_results.rows.length == 0){ 
+            result = {success: false};
+                
+    
+        }
+        else {
+    
+          console.log ("Back from the database with: ");
+          var queryRes = JSON.parse(JSON.stringify(connectionString_search_results.rows));
+          //console.log(connectionString_search_results);
+          for(var i in queryRes)
+          resultStringed.push([i, queryRes[i]]);
+    
+          console.log(resultStringed[0][1]);
+          //console.log(resultStringed[0][1].email);
+          //console.log("test"+connectionString_results.rowCount);
+    
+          
+       //  emailQuery = resultStringed[0][1].email;
+        // passQuery = resultStringed[0][1].password;
+        }
+    
+      });
+
+*/
+
+  } else if (filterBy == "Author"){
+    sqlqueryEjs = "SELECT book_title, book_author, book_isbn, publisher FROM books WHERE book_author LIKE '%$2::text%'";
+   // console.log(sqlqueryEjs);
+   var params = [filterBy, searchQuery];
+  } else if(filterBy == "ISBN"){
+    sqlqueryEjs = "SELECT book_title, book_author, book_isbn, publisher FROM books WHERE book_isbn LIKE '%$2::text%'";
+   // console.log(sqlqueryEjs);
+   var params = [filterBy, searchQuery];
+  } else if(filterBy == "Publisher"){
+    sqlqueryEjs = "SELECT book_title, book_author, book_isbn, publisher FROM books WHERE publisher LIKE '%$2::text%'";
+   // console.log(sqlqueryEjs);
+   var params = [filterBy, searchQuery];
+  }
+
+
+});
+
 
 
 
 module.exports = router;
+
